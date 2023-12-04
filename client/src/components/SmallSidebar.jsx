@@ -6,8 +6,7 @@ import links from '../utils/links'
 import NavLinks from './NavLinks'
 
 const SmallSidebar = () => {
-  const { showSidebar, toggleSidebar } = useDashboardContext()
-  toggleSidebar
+  const { showSidebar, toggleSidebar } = useDashboardContext() || {}
   return (
     <Wrapper>
       <div

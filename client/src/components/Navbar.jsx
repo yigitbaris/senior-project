@@ -6,7 +6,7 @@ import LogoutContainer from './LogoutContainer'
 import ThemeToggle from './ThemeToggle'
 
 const Navbar = () => {
-  const { toggleSidebar } = useDashboardContext()
+  const { toggleSidebar } = useDashboardContext() || {}
 
   return (
     <Wrapper>

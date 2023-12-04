@@ -3,7 +3,7 @@ import links from '../utils/links'
 import { NavLink } from 'react-router-dom'
 
 const NavLinks = ({ isBigSidebar }) => {
-  const { toggleSidebar, user } = useDashboardContext()
+  const { toggleSidebar, user } = useDashboardContext() || {}
   return (
     <div className='nav-links'>
       {links.map((link) => {

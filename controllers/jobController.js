@@ -18,11 +18,11 @@ export const getJob = async (req, res) => {
 }
 
 export const updateJob = async (req, res) => {
-  const updatedJob = await Job.findByIdAndUpdate(req.body.id, req.body, {
+  const updatedJob = await Job.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   })
 
-  return res.status(StatusCodes.OK).json({ msg: 'job modify', job: updatedJob })
+  res.status(StatusCodes.OK).json({ msg: 'job modified', job: updatedJob })
 }
 
 export const deleteJob = async (req, res) => {
