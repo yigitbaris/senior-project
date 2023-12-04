@@ -32,12 +32,12 @@ const DashboardLayout = ({}) => {
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar)
-    toast.success('Logging out...')
   }
 
   const logoutUser = async () => {
     navigate('/')
     await customFetch.get('auth/logout')
+    toast.success('Logging out...')
   }
 
   return (

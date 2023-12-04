@@ -1,6 +1,6 @@
 export const JOB_STATUS = {
   PENDING: 'pending',
-  INTERVIEW: 'kitap',
+  INTERVIEW: 'interview',
   DECLINED: 'declined',
 }
 
