@@ -12,6 +12,7 @@ import {
   Profile,
   Admin,
   EditJob,
+  Deneme,
 } from './pages'
 
 import { action as registerAction } from './pages/Register'
@@ -92,6 +93,10 @@ const router = createBrowserRouter([
           {
             path: 'delete-job/:id',
             action: deleteJobAction,
+          },
+          {
+            path: 'deneme',
+            element: <Deneme />,
           },
         ],
       },

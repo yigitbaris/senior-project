@@ -4,7 +4,7 @@ import mongoose from 'mongoose'
 import day from 'dayjs'
 
 export const getAllJobs = async (req, res) => {
-  const jobs = await Job.find({ createdBy: req.user.userId })
+  const jobs = await Job.find(/*{ createdBy: req.user.userId }*/)
   res.status(StatusCodes.OK).json({ jobs })
 }
 
