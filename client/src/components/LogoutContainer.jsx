@@ -6,7 +6,7 @@ import customFetch from '../utils/customFetch'
 
 const LogoutContainer = () => {
   const [showLogout, setShowLogout] = useState(false)
-  const { user, logoutUser } = useDashboardContext() || {}
+  const { user, logoutUser } = useDashboardContext()
 
   return (
     <Wrapper>
@@ -15,11 +15,13 @@ const LogoutContainer = () => {
         className='btn logout-btn'
         onClick={() => setShowLogout(!showLogout)}
       >
-        {user.avatar ? (
+        {/* {user.avatar ? (
           <img src={user.avatar} alt='avatar' className='img' />
         ) : (
           <FaUserCircle />
-        )}
+        )} */}
+        <FaUserCircle />
+
         {user?.name}
         <FaCaretDown />
       </button>

@@ -1,31 +1,26 @@
-import { toast } from 'react-toastify'
-import { JobsContainer } from '../components'
+import React, { useState } from 'react'
 import customFetch from '../utils/customFetch'
 import { useLoaderData } from 'react-router-dom'
 import { useContext, createContext } from 'react'
 
+import 'react-calendar/dist/Calendar.css'
+import { toast } from 'react-toastify'
+
 export const loader = async () => {
   try {
     const { data } = await customFetch.get('/jobs')
-
     return { data }
   } catch (error) {
     toast.error(error?.response?.data?.msg)
     return error
   }
 }
-
 const AllJobsContext = createContext()
 
-const AllJobs = () => {
+const Program = () => {
   const { data } = useLoaderData()
-  return (
-    <AllJobsContext.Provider value={{ data }}>
-      <JobsContainer />
-    </AllJobsContext.Provider>
-  )
+  console.log(data)
+  return <h1>denemee</h1>
 }
 
-export const useAllJobsContext = () => useContext(AllJobsContext)
-
-export default AllJobs
+export default Program

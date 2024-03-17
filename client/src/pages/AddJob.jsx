@@ -10,7 +10,10 @@ export const action = async ({ request }) => {
   const formData = await request.formData()
   const data = Object.fromEntries(formData)
 
+  data.createdAt = new Date(2024, 2, 25).toISOString()
+
   try {
+    console.log(JSON.stringify(data) + ' addjob api ye yollanan')
     await customFetch.post('/jobs', data)
     toast.success('Job added successfully')
     return redirect('/dashboard/all-jobs')

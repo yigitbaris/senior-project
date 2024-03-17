@@ -12,7 +12,7 @@ import {
   Profile,
   Admin,
   EditJob,
-  Deneme,
+  Program,
 } from './pages'
 
 import { action as registerAction } from './pages/Register'
@@ -26,6 +26,7 @@ import { action as deleteJobAction } from './pages/DeleteJob'
 import { loader as adminLoader } from './pages/Admin'
 import { action as profileAction } from './pages/Profile'
 import { loader as statsLoader } from './pages/Stats'
+import { loader as programLoader } from './pages/Program'
 
 export const checkDefaultTheme = () => {
   const isDarkTheme = localStorage.getItem('darkTheme') === 'true'
@@ -95,8 +96,9 @@ const router = createBrowserRouter([
             action: deleteJobAction,
           },
           {
-            path: 'deneme',
-            element: <Deneme />,
+            path: 'program',
+            element: <Program />,
+            loader: programLoader,
           },
         ],
       },

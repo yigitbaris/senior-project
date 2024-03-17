@@ -4,8 +4,9 @@ import Wrapper from '../assets/wrappers/Job'
 import JobInfo from './JobInfo'
 import day from 'dayjs'
 import advanceFormat from 'dayjs/plugin/advancedFormat'
-import { useDashboardContext } from '../pages/DashboardLayout'
 day.extend(advanceFormat)
+
+import { useDashboardContext } from '../pages/DashboardLayout'
 
 /*
 Job tuşlarını admin şartıyla gösterme
@@ -23,6 +24,12 @@ const Job = ({
   const { user } = useDashboardContext() || {}
   const { role } = user
   const date = day(createdAt).format('MMM Do,YYYY')
+
+  /* deneme alanı  */
+  const dayName = day(createdAt).format('dddd')
+  // console.log(dayName)
+  /* deneme alanı  */
+
   return (
     <Wrapper>
       <header>
@@ -35,12 +42,12 @@ const Job = ({
       <div className='content'>
         <div className='content-center'>
           <JobInfo icon={<FaLocationArrow />} text={jobLocation} />
-          <JobInfo icon={<FaCalendarAlt />} text={date} />
+          <JobInfo icon={<FaCalendarAlt />} text={date + ' ' + dayName} />
           <JobInfo icon={<FaBriefcase />} text={jobType} />
           <div className={`status ${jobStatus}`}>{jobStatus}</div>
         </div>
 
-        {/* if user is admin condition  !!!!! will be added  */}
+        {/* if user is admin condition  !!!!! */}
 
         {role === 'admin' && (
           <footer className='actions'>

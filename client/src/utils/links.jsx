@@ -34,8 +34,8 @@ const links = [
     icon: <MdAdminPanelSettings />,
   },
   {
-    text: 'deneme',
-    path: 'deneme',
+    text: 'program',
+    path: 'program',
     icon: <MdOutlineTry />,
   },
 ]
