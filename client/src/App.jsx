@@ -13,6 +13,7 @@ import {
   Admin,
   EditJob,
   Program,
+  Welcome,
 } from './pages'
 
 import { action as registerAction } from './pages/Register'
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
+            element: <Welcome />,
+          },
+          {
+            path: 'add-job',
             element: <AddJob />,
             action: addJobAction,
           },

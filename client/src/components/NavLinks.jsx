@@ -12,6 +12,7 @@ const NavLinks = ({ isBigSidebar }) => {
         /* admin rolüyle girilen rootlar */
         if (path === 'admin' && role !== 'admin') return
         if (path === 'program' && role !== 'admin') return
+        if (path === 'add-job' && role !== 'admin') return
         return (
           <NavLink
             to={path}

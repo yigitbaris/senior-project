@@ -20,6 +20,7 @@ const Job = ({
   jobType,
   createdAt,
   jobStatus,
+  jobDate,
 }) => {
   const { user } = useDashboardContext() || {}
   const { role } = user
@@ -42,7 +43,8 @@ const Job = ({
       <div className='content'>
         <div className='content-center'>
           <JobInfo icon={<FaLocationArrow />} text={jobLocation} />
-          <JobInfo icon={<FaCalendarAlt />} text={date + ' ' + dayName} />
+          {/* <JobInfo icon={<FaCalendarAlt />} text={date + ' ' + dayName} /> */}
+          <JobInfo icon={<FaCalendarAlt />} text={jobDate} />
           <JobInfo icon={<FaBriefcase />} text={jobType} />
           <div className={`status ${jobStatus}`}>{jobStatus}</div>
         </div>

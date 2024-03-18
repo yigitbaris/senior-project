@@ -2,6 +2,9 @@ import React from 'react'
 import { IoBarChartSharp } from 'react-icons/io5'
 import { MdQueryStats } from 'react-icons/md'
 import { FaWpforms } from 'react-icons/fa'
+import { FaBeer } from 'react-icons/fa'
+import { FaHouse } from 'react-icons/fa6'
+
 import { ImProfile } from 'react-icons/im'
 import { MdAdminPanelSettings } from 'react-icons/md'
 
@@ -9,8 +12,13 @@ import { MdOutlineTry } from 'react-icons/md'
 
 const links = [
   {
-    text: 'add job',
+    text: 'home',
     path: '.',
+    icon: <FaHouse />,
+  },
+  {
+    text: 'add job',
+    path: 'add-job',
     icon: <FaWpforms />,
   },
   {

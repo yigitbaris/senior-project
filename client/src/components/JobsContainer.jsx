@@ -1,46 +1,51 @@
 import Job from './Job'
 import Wrapper from '../assets/wrappers/JobsContainer'
 import { useAllJobsContext } from '../pages/AllJobs'
+import day from 'dayjs'
+import WeekOfYear from 'dayjs/plugin/weekOfYear'
+import advanceFormat from 'dayjs/plugin/advancedFormat'
+day.extend(advanceFormat)
+day.extend(WeekOfYear)
 
 const JobsContainer = () => {
   const { data } = useAllJobsContext()
   const { jobs } = data
 
+  const date = day(jobs.jobDate)
+  console.log(date)
+
   const sortedData = jobs.sort(
-    (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+    (a, b) => new Date(a.jobDate) - new Date(b.jobDate)
   )
-  console.log(sortedData)
 
-  const currentDate = new Date()
+  const jobDateCounts = {}
 
-  // Haftanın başlangıç tarihini bul
-  const firstDayOfWeek = new Date(currentDate)
-  firstDayOfWeek.setDate(firstDayOfWeek.getDate() - currentDate.getDay())
-
-  // Haftanın bitiş tarihini bul
-  const lastDayOfWeek = new Date(currentDate)
-  lastDayOfWeek.setDate(lastDayOfWeek.getDate() + (6 - currentDate.getDay()))
-
-  // Haftanın işlerini filtrele
-  const jobsInCurrentWeek = jobs.filter((job) => {
-    const createdAtDate = new Date(job.createdAt)
-    return createdAtDate >= firstDayOfWeek && createdAtDate <= lastDayOfWeek
+  // Jobs'u filtrele ve her jobDate değeri için maksimum 2 iş göster
+  const filteredJobs = sortedData.filter((job) => {
+    if (!jobDateCounts[job.jobDate]) {
+      jobDateCounts[job.jobDate] = 1
+      return true
+    } else if (jobDateCounts[job.jobDate] < 2) {
+      jobDateCounts[job.jobDate]++
+      return true
+    }
+    return false
   })
 
-  console.log(jobsInCurrentWeek)
-
-  if (sortedData.length === 0) {
+  if (filteredJobs.length === 0) {
     return (
       <Wrapper>
         <h2>No jobs to display...</h2>
       </Wrapper>
     )
   }
+
   return (
     <Wrapper>
       <div className='jobs'>
         {/* sortedData.map((job) tüm işleri sırasına göre bastırır */}
-        {jobsInCurrentWeek.map((job) => {
+        {filteredJobs.map((job) => {
+          console.log(day(jobs.jobDate).week())
           return <Job key={job._id} {...job} />
         })}
       </div>
