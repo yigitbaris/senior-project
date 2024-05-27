@@ -20,14 +20,14 @@ const Admin = () => {
   return (
     <Wrapper>
       <StatItem
-        title='current users'
+        title='güncel kullanıcılar'
         count={users}
         color='#e9b949'
         bcg='#fcefc7'
         icon={<FaSuitcaseRolling />}
       />
       <StatItem
-        title='total jobs'
+        title='toplam işler'
         count={jobs}
         color='#647acb'
         bcg='#e0e8f9'

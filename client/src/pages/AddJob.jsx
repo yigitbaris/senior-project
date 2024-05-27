@@ -28,7 +28,7 @@ const getCurrentWeekDays = () => {
 
   for (let i = 0; i < 7; i++) {
     const currentDate = new Date(today.getTime() + i * 24 * 60 * 60 * 1000)
-    const formattedDate = currentDate.toLocaleDateString('en-US', options)
+    const formattedDate = currentDate.toLocaleDateString('tr-TR', options)
     currentWeekDays.push(formattedDate)
   }
 
@@ -43,24 +43,34 @@ const AddJob = () => {
   return (
     <Wrapper>
       <Form method='post' className='form'>
-        <h4 className='form-title'>add job</h4>
+        <h4 className='form-title'>İş Ekle</h4>
         <div className='form-center'>
-          <FormRow type='text' name='position' defaultValue='deneme' />
-          <FormRow type='text' name='company' defaultValue='deneme' />
           <FormRow
             type='text'
-            labelText='job location'
+            name='position'
+            labelText='Pozisyon'
+            defaultValue='deneme'
+          />
+          <FormRow
+            type='text'
+            name='company'
+            labelText='Şirket'
+            defaultValue='deneme'
+          />
+          <FormRow
+            type='text'
+            labelText='İş Lokasyonu'
             name='jobLocation'
             defaultValue={user.location}
           />
           <FormRowSelect
-            labelText='job status'
+            labelText='İş Durumu'
             name='jobStatus'
             defaultValue={JOB_STATUS.PENDING}
             list={Object.values(JOB_STATUS)}
           />
           <FormRowSelect
-            labelText='job type'
+            labelText='İş Tipi'
             name='jobType'
             defaultValue={JOB_TYPE.FULL_TIME}
             list={Object.values(JOB_TYPE)}

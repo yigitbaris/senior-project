@@ -13,7 +13,7 @@ const Landing = () => {
       <div className='container page'>
         <div className='info'>
           <h1>
-            job <span>tracking</span> app
+            Nöbet <span>Takip</span> Uygulaması
           </h1>
           <p>
             umut ipsum dolor sit amet consectetur adipisicing elit. Placeat
@@ -22,10 +22,10 @@ const Landing = () => {
             possimus! Facere!
           </p>
           <Link to='/register' className='btn register-link'>
-            Register
+            Kaydol
           </Link>
           <Link to='/login' className='btn'>
-            Login / Demo User
+            Giris / Demo Kullanıcı
           </Link>
         </div>
         <img src={main} alt='job hunt' className='img main-img' />

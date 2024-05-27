@@ -11,9 +11,7 @@ const JobsContainer = () => {
   const { data } = useAllJobsContext()
   const { jobs } = data
 
-  const date = day(jobs.jobDate)
-  console.log(date)
-
+  /* tarihe göre sıralama */
   const sortedData = jobs.sort(
     (a, b) => new Date(a.jobDate) - new Date(b.jobDate)
   )
@@ -32,20 +30,29 @@ const JobsContainer = () => {
     return false
   })
 
-  if (filteredJobs.length === 0) {
-    return (
-      <Wrapper>
-        <h2>No jobs to display...</h2>
-      </Wrapper>
-    )
-  }
+  //if the job in the same week
+  const checkSameWeek = filteredJobs.filter((job) => {
+    const today = new Date()
+    const weekOfToday = day(today).week()
+    if (day(job.jobDate).week() !== weekOfToday) {
+      return false
+    }
+    return true
+  })
+
+  // if (checkSameWeek.length === 0) {
+  //   return (
+  //     <Wrapper>
+  //       <h2>No jobs to display...</h2>
+  //     </Wrapper>
+  //   )
+  // }
 
   return (
     <Wrapper>
       <div className='jobs'>
-        {/* sortedData.map((job) tüm işleri sırasına göre bastırır */}
+        {/* filteredJobs.map((job) tüm işleri sırasına göre bastırır */}
         {filteredJobs.map((job) => {
-          console.log(day(jobs.jobDate).week())
           return <Job key={job._id} {...job} />
         })}
       </div>

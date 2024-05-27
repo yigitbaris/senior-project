@@ -24,6 +24,10 @@ const JobSchema = new mongoose.Schema(
       ref: 'User',
     },
     jobDate: String,
+    jobAssignTo: {
+      type: String,
+      default: 'none',
+    },
   },
   { timestamps: true }
 )

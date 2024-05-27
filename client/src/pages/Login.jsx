@@ -39,17 +39,22 @@ const Login = () => {
     <Wrapper>
       <Form method='post' className='form'>
         <Logo />
-        <h4>login</h4>
+        <h4>Giris</h4>
         <FormRow type='email' name='email' defaultValue='baris@gmail.com' />
-        <FormRow type='password' name='password' defaultValue='secret123' />
+        <FormRow
+          type='password'
+          name='password'
+          labelText='sifre'
+          defaultValue='secret123'
+        />
         <SubmitBtn />
         <button type='button' className='btn btn-block' onClick={loginDemoUser}>
-          explore the app
+          uygulamayı kesfet
         </button>
         <p>
-          Not a member yet?
+          Henüz Üye Değil misin?
           <Link to='/register' className='member-btn'>
-            Register
+            Kaydol
           </Link>
         </p>
       </Form>

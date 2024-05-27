@@ -12,27 +12,27 @@ import { MdOutlineTry } from 'react-icons/md'
 
 const links = [
   {
-    text: 'home',
+    text: 'ana sayfa',
     path: '.',
     icon: <FaHouse />,
   },
   {
-    text: 'add job',
+    text: 'iş ekle',
     path: 'add-job',
     icon: <FaWpforms />,
   },
   {
-    text: 'all jobs',
+    text: 'tüm işler',
     path: 'all-jobs',
     icon: <MdQueryStats />,
   },
   {
-    text: 'stats',
+    text: 'istatistikler',
     path: 'stats',
     icon: <IoBarChartSharp />,
   },
   {
-    text: 'profile',
+    text: 'profil',
     path: 'profile',
     icon: <ImProfile />,
   },

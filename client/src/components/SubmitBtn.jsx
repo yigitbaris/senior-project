@@ -8,7 +8,7 @@ const SubmitBtn = ({ formBtn }) => {
       className={`btn btn-block ${formBtn && 'form-btn'}`}
       disabled={isSubmitting}
     >
-      {isSubmitting ? 'submitting' : 'submit'}
+      {isSubmitting ? 'gönderiliyor' : 'gönder'}
     </button>
   )
 }
