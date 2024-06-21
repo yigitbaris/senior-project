@@ -13,7 +13,13 @@ const FormRowSelect = ({ name, labelText, list, defaultValue = '' }) => {
         {list.map((itemValue) => {
           return (
             <option key={itemValue} value={itemValue}>
-              {itemValue}
+              {itemValue === 'pending'
+                ? 'beklemede'
+                : itemValue === 'interview'
+                ? 'atandı'
+                : itemValue === 'declined'
+                ? 'reddedildi'
+                : itemValue}
             </option>
           )
         })}

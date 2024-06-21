@@ -7,7 +7,8 @@ import { useContext, createContext } from 'react'
 export const loader = async () => {
   try {
     const { data } = await customFetch.get('/jobs')
-
+    // const denemelikData = await customFetch.get('/users/admin/nobet-ata')
+    // console.log(denemelikData.data)
     return { data }
   } catch (error) {
     toast.error(error?.response?.data?.msg)

@@ -15,9 +15,6 @@ import {
 } from '../middleware/validationMiddleware.js'
 import { checkForTestUser } from '../middleware/authMiddleware.js'
 
-// router.get("/", getAllJobs)
-// router.post("/", createJob)
-
 router
   .route('/')
   .get(getAllJobs)
@@ -30,5 +27,8 @@ router
   .get(validateIdParam, getJob)
   .patch(checkForTestUser, validateJobInput, validateIdParam, updateJob)
   .delete(checkForTestUser, validateIdParam, deleteJob)
+
+// router.get("/", getAllJobs)
+// router.post("/", createJob)
 
 export default router

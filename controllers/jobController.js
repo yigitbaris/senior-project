@@ -1,10 +1,18 @@
 import Job from '../models/JobModel.js'
+import User from '../models/UserModel.js'
 import { StatusCodes } from 'http-status-codes'
 import mongoose from 'mongoose'
 import day from 'dayjs'
 
 export const getAllJobs = async (req, res) => {
-  const jobs = await Job.find(/*{ createdBy: req.user.userId }*/)
+  const user = await User.findById(req.user.userId)
+
+  let jobs
+  if (user.role === 'admin') {
+    jobs = await Job.find()
+  } else {
+    jobs = await Job.find({ jobAssignTo: req.user.userId })
+  }
   res.status(StatusCodes.OK).json({ jobs })
 }
 

@@ -46,7 +46,17 @@ const Job = ({
           {/* <JobInfo icon={<FaCalendarAlt />} text={date + ' ' + dayName} /> */}
           <JobInfo icon={<FaCalendarAlt />} text={jobDate} />
           <JobInfo icon={<FaBriefcase />} text={jobType} />
-          <div className={`status ${jobStatus}`}>{jobStatus}</div>
+          {role === 'admin' && (
+            <div className={`status ${jobStatus}`}>
+              {jobStatus === 'pending'
+                ? 'Beklemede'
+                : jobStatus === 'interview'
+                ? 'Atandı'
+                : jobStatus === 'declined'
+                ? 'Reddedildi'
+                : 'Bilinmeyen Durum'}
+            </div>
+          )}
         </div>
 
         {/* if user is admin condition  !!!!! */}

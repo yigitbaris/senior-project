@@ -11,47 +11,38 @@ const JobsContainer = () => {
   const { data } = useAllJobsContext()
   const { jobs } = data
 
-  /* tarihe göre sıralama */
-  const sortedData = jobs.sort(
-    (a, b) => new Date(a.jobDate) - new Date(b.jobDate)
-  )
-
-  const jobDateCounts = {}
-
-  // Jobs'u filtrele ve her jobDate değeri için maksimum 2 iş göster
-  const filteredJobs = sortedData.filter((job) => {
-    if (!jobDateCounts[job.jobDate]) {
-      jobDateCounts[job.jobDate] = 1
-      return true
-    } else if (jobDateCounts[job.jobDate] < 2) {
-      jobDateCounts[job.jobDate]++
-      return true
+  function convertToDate(dateString) {
+    const months = {
+      Ocak: 0,
+      Şubat: 1,
+      Mart: 2,
+      Nisan: 3,
+      Mayıs: 4,
+      Haziran: 5,
+      Temmuz: 6,
+      Ağustos: 7,
+      Eylül: 8,
+      Ekim: 9,
+      Kasım: 10,
+      Aralık: 11,
     }
-    return false
-  })
 
-  //if the job in the same week
-  const checkSameWeek = filteredJobs.filter((job) => {
-    const today = new Date()
-    const weekOfToday = day(today).week()
-    if (day(job.jobDate).week() !== weekOfToday) {
-      return false
-    }
-    return true
-  })
+    const parts = dateString.split(' ')
+    const day = parseInt(parts[0], 10)
+    const month = months[parts[1]]
+    const year = new Date().getFullYear()
+    return new Date(year, month, day)
+  }
 
-  // if (checkSameWeek.length === 0) {
-  //   return (
-  //     <Wrapper>
-  //       <h2>No jobs to display...</h2>
-  //     </Wrapper>
-  //   )
-  // }
+  const filteredJobs = jobs.sort((a, b) => {
+    const dateA = convertToDate(a.jobDate)
+    const dateB = convertToDate(b.jobDate)
+    return dateA - dateB
+  })
 
   return (
     <Wrapper>
       <div className='jobs'>
-        {/* filteredJobs.map((job) tüm işleri sırasına göre bastırır */}
         {filteredJobs.map((job) => {
           return <Job key={job._id} {...job} />
         })}
