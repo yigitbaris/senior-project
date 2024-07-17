@@ -60,7 +60,7 @@ function convertToDate(dateString) {
 export const nobetAta = async (req, res) => {
   const jobs = await Job.find()
   const users = await User.find()
-
+  const denemelikJobs = []
   const filteredJobs = jobs
     .map((job) => ({
       id: job._id,
@@ -80,15 +80,18 @@ export const nobetAta = async (req, res) => {
   const assignJobs = async () => {
     for (const job of filteredJobs) {
       if (job.jobAssignTo === 'none') {
+        denemelikJobs.push(job)
         for (const user of userUsers) {
           // Check if the user doesn't have a job on the same date
-          const userHasJobOnDate = filteredJobs.some(
-            (j) => j.jobAssignTo === user._id && j.jobDate === job.jobDate
-          )
+          const userHasJobOnDate = await Job.findOne({
+            jobAssignTo: user._id,
+            jobDate: job.jobDate,
+          })
           if (!userHasJobOnDate) {
             // Update job assignment in the filteredJobs array
             job.jobAssignTo = user._id
             job.jobStatus = 'interview'
+            job.useName = user.name
 
             // Update job assignment in the jobs collection
             await Job.findByIdAndUpdate(job.id, {
@@ -105,7 +108,5 @@ export const nobetAta = async (req, res) => {
 
   await assignJobs()
 
-  res
-    .status(StatusCodes.OK)
-    .json({ jobs, users, filteredJobs, msg: 'denemeee' })
+  res.status(StatusCodes.OK).json({ filteredJobs, denemelikJobs })
 }
