@@ -1,6 +1,6 @@
 #### Özellikler
 
-### KUllanıcı Özellikleri
+### Kullanıcı Özellikleri
 - Admin ve Doktor Kullanıcı Ayrımı
 - JWT ile Güvenli Bağlantı
 - Database'de Şifrelerin JWT ile Şifrelenmesi
