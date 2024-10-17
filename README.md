@@ -1,4 +1,3 @@
-#### Özellikler
 
 ### Kullanıcı Özellikleri
 - Admin ve Doktor Kullanıcı Ayrımı
